@@ -1,10 +1,9 @@
 // Variables
-// $body: #00a08a;
-// $border: #a9295c;
-$body: #eb716b;
+$body: #fce8ba;
+$border: #bf0c4b;
 $blue: #7fbfc7;
-$border: #d37108;
 $darkblue: #0a5870;
+$blush: #c2718e;
 
 $full-page-height: calc(100vh + 500px);
 $top-ocean-height: calc(100vh + 100px);
@@ -20,7 +19,6 @@ body {
 }
 
 h1 {
-  // font-family: 'Modak', cursive;
   font-size: 50px;
   color: $border;
   font-weight: normal;
@@ -60,6 +58,10 @@ h1 {
 
   display: flex;
   flex-direction: column;
+
+  &:hover {
+    background-image: linear-gradient($body, $blush, $body);
+  }
 }
 
 .face-row {
@@ -68,7 +70,6 @@ h1 {
 
   flex-direction: row;
   justify-content: space-around;
-
 }
 
 .eye-row {
@@ -78,19 +79,42 @@ h1 {
 .eye {
   height: 80px;
   width: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: solid 2px $border;
+}
+
+.eye-ball {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
 
   background-image: radial-gradient(black 20%, white 22% 100%);
-  border: solid 2px $border;
-  border-radius: 50%;
   position: relative;
 
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  &:hover {
-    background-image: none;
-    background-color: $body;
+  transition: all 0.5s;
+
+  &:before {
+    position: absolute;
+    z-index: 9;
+    content: '';
+    transition: all 0.25s;
+
+    left: 0;
+    width: 100%;
+    height: 0;
+
+    top: 0;
+    background-color: $border;
+  }
+
+  &:hover:before {
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -123,7 +147,6 @@ h1 {
   height: $wave-ocean-height;
   width:100%;
   position:absolute;
-  // bottom: $top-ocean-height;
   left:0;
   background: #015871;
 
