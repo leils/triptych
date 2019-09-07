@@ -1,0 +1,166 @@
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0px;
+  font-family: "Modak", cursive;
+}
+
+h1 {
+  font-size: 50px;
+  color: #d37108;
+  font-weight: normal;
+  background-color: white;
+}
+
+/* Comic base */
+.comic {
+  width: 100%;
+  min-width: 1000px;
+  min-height: calc(100vh + 500px);
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Box-boy */
+.box {
+  height: 300px;
+  width: 300px;
+  background-color: #eb716b;
+  margin: 20px;
+  padding: 20px;
+  border: solid 5px #d37108;
+  border-radius: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+.face-row {
+  display: inherit;
+  width: inherit;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.eye-row {
+  padding-top: 40px;
+}
+
+.eye {
+  height: 80px;
+  width: 80px;
+  background-image: radial-gradient(black 20%, white 22% 100%);
+  border: solid 2px #d37108;
+  border-radius: 50%;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.eye:hover {
+  background-image: none;
+  background-color: #eb716b;
+}
+
+.small-eye {
+  height: 60px;
+  width: 60px;
+}
+
+.crying {
+  background-image: linear-gradient(transparent 70%, #7fbfc7 72% 100%), radial-gradient(black 20%, white 22% 100%);
+}
+
+.tears {
+  width: 40px;
+  height: calc(100vh + 500px);
+  background-image: linear-gradient(#7fbfc7, #0a5870);
+}
+
+.tears-left {
+  margin-top: -20px;
+}
+
+.tears-right {
+  margin-top: -40px;
+}
+
+/* Ocean  */
+.ocean {
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  background: #015871;
+  animation-fill-mode: forwards;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-name: slidein;
+}
+.ocean:after {
+  content: "refresh to pretend things are okay";
+  font-size: 25px;
+  color: white;
+  height: calc(100vh + 500px);
+  width: 100%;
+  background-color: #0a5870;
+  display: block;
+  position: absolute;
+  top: 65px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.wave {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
+  position: absolute;
+  top: -198px;
+  width: 6400px;
+  height: 198px;
+  animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+}
+.wave:nth-of-type(2) {
+  top: -175px;
+  animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite, swell 7s ease -1.25s infinite;
+  opacity: 1;
+}
+
+@keyframes slidein {
+  from {
+    bottom: 0;
+  }
+  to {
+    bottom: calc(100vh + 100px);
+  }
+}
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+@keyframes swell {
+  0%, 100% {
+    transform: translate3d(0, -25px, 0);
+  }
+  50% {
+    transform: translate3d(0, 5px, 0);
+  }
+}
+
+/*# sourceMappingURL=comic.css.map */

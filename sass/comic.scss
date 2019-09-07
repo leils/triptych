@@ -1,0 +1,196 @@
+// Variables
+// $body: #00a08a;
+// $border: #a9295c;
+$body: #eb716b;
+$blue: #7fbfc7;
+$border: #d37108;
+$darkblue: #0a5870;
+
+$full-page-height: calc(100vh + 500px);
+$top-ocean-height: calc(100vh + 100px);
+$wave-ocean-height: 200px;
+
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  margin: 0px;
+  font-family: 'Modak', cursive;
+}
+
+h1 {
+  // font-family: 'Modak', cursive;
+  font-size: 50px;
+  color: $border;
+  font-weight: normal;
+  background-color: white;
+}
+
+/* Comic base */
+.comic {
+  width: 100%;
+  min-width: 1000px;
+  min-height: $full-page-height;
+  padding-top: 20px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Box-boy */
+.box {
+  height: 300px;
+  width: 300px;
+
+  background-color: $body;
+  margin: 20px;
+  padding: 20px;
+
+  border: solid 5px $border;
+  border-radius: 10%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.face-row {
+  display: inherit;
+  width: inherit;
+
+  flex-direction: row;
+  justify-content: space-around;
+
+}
+
+.eye-row {
+  padding-top: 40px;
+}
+
+.eye {
+  height: 80px;
+  width: 80px;
+
+  background-image: radial-gradient(black 20%, white 22% 100%);
+  border: solid 2px $border;
+  border-radius: 50%;
+  position: relative;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-image: none;
+    background-color: $body;
+  }
+}
+
+.small-eye {
+  height: 60px;
+  width: 60px;
+}
+
+
+.crying {
+  background-image: linear-gradient(transparent 70%, $blue 72% 100%), radial-gradient(black 20%, white 22% 100%);
+}
+
+.tears {
+  width: 40px;
+  height: $full-page-height;
+  background-image: linear-gradient($blue, $darkblue);
+}
+
+.tears-left {
+  margin-top: -20px;
+}
+
+.tears-right {
+  margin-top: -40px;
+}
+
+/* Ocean  */
+.ocean {
+  height: $wave-ocean-height;
+  width:100%;
+  position:absolute;
+  // bottom: $top-ocean-height;
+  left:0;
+  background: #015871;
+
+  animation-fill-mode: forwards;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-name: slidein;
+
+  &:after {
+    content: "refresh to pretend things are okay";
+    font-size: 25px;
+    color: white;
+
+    height: $full-page-height;
+    width: 100%;
+    background-color: $darkblue;
+    display: block;
+    position: absolute;
+    top: 65px;
+
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.wave {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
+  position: absolute;
+  top: -198px;
+  width: 6400px;
+  height: 198px;
+  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+
+  &:nth-of-type(2) {
+    top: -175px;
+    animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
+    opacity: 1;
+  }
+}
+
+@keyframes slidein {
+  from {
+    bottom:0;
+  }
+
+  to {
+    bottom: $top-ocean-height;
+  }
+}
+
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+
+@keyframes swell {
+  0%, 100% {
+    transform: translate3d(0,-25px,0);
+  }
+  50% {
+    transform: translate3d(0,5px,0);
+  }
+}
